@@ -1,7 +1,4 @@
 
-
-// Function type, parameters ...
-
 // Primitives: number, string, boolean
 let age: number = 12;
 // age = '12'; error
