@@ -8,3 +8,4 @@ commands
 - Build and serve an angular app locally ==> ng serve
 - Install bootstrap ==> npm install --save bootstrap@3 and add "node_modules/bootstrap/dist/css/bootstrap.min.css",
   to angular.json styles
+- Generate component ==> ng generate component [name of component] | ng g c [name of component]
