@@ -4,13 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { ServerComponent } from './server/server.component';
-import { CustomServerComponent } from './custom-server/custom-server.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ServerComponent,
-    CustomServerComponent
+    UserComponent
   ],
   imports: [
     BrowserModule,
