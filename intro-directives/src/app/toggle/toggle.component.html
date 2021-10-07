@@ -1,0 +1,33 @@
+<!-- second version of display Component -->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Display Component</h3>
+            <ol>
+                <li>Add A button which says 'Display Details'</li>
+                <li>Add a paragraph with any content of your choice (e.g. 'Secret Password = tuna')</li>
+                <li>Toggle the displaying of that paragraph with the button created in the first step</li>
+                <li>Log all button clicks in an array and output that array below the secret paragraph (maybe log a timestamp or simply an incrementing number)</li>
+                <li>Starting at the 5th log item, give all future log items a blue background (via ngStyle) and white color (ngClass)</li>
+              </ol>
+            <button 
+                type="button"
+                class="btn btn-warning"
+                (click)="onDisplyDetails()">
+
+                Display details
+            </button>
+            <p *ngIf="displyDetails">
+                The definition of detail is to describe or give information about something, or to clean and shine all parts of an automobile.
+            </p>
+            <li *ngFor="let click of clickes; let i = index" >
+                <span
+                [ngStyle]="{backgroundColor: i>=4 ? 'blue' : 'transparent'}"
+                [ngClass]="{item: i >=4}">
+               
+                    {{ click }}
+                </span>
+            </li>
+        </div>
+    </div>
+</div>
