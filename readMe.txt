@@ -9,3 +9,4 @@ commands
 - Install bootstrap ==> npm install --save bootstrap@3 and add "node_modules/bootstrap/dist/css/bootstrap.min.css",
   to angular.json styles
 - Generate component ==> ng generate component [name of component] | ng g c [name of component]
+- Generate component without test ==> ng g c --skipTests true recipes/recipe-list
