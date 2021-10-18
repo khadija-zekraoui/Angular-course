@@ -13,12 +13,13 @@ export class CockpitComponent implements OnInit {
   @Output() blueprintCreated = new EventEmitter<Server>();
   
   // Select component by reference which it allows getting direct access to elements in the DOM
+  // serverContentInput --> Local reference fetched  through viewChild()
   @ViewChild('serverContentInput') serverContentInput: ElementRef;
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
-
+  // serverNameInput --> Local references passed to methods
   onAddServer(serverNameInput: HTMLInputElement) {
     // To emit the custom event
     this.serverCreated.emit(
