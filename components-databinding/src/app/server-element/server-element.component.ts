@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ContentChild, ElementRef, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Server } from '../models/server.model';
 
 @Component({
@@ -15,6 +15,10 @@ export class ServerElementComponent implements OnInit {
   
   // decorator to make a property bindale from outside
   @Input('serverElement') element: Server | undefined;
+  
+  // Select component by reference which it allows getting direct access to elements in the DOM
+  // This element is situated in the parent element app.component.html
+  @ContentChild('contentParagraph') paragraph: ElementRef;
 
   constructor() { }
 
