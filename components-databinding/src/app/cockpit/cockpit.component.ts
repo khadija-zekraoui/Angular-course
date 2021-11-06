@@ -12,7 +12,7 @@ export class CockpitComponent implements OnInit {
   @Output() serverCreated = new EventEmitter<Server>();
   @Output() blueprintCreated = new EventEmitter<Server>();
   
-  // Select component by reference which it allows getting direct access to elements in the DOM
+  // Select component (element such as en input fieled) by reference which it allows getting direct access to elements in the DOM
   // serverContentInput --> Local reference fetched  through viewChild()
   @ViewChild('serverContentInput') serverContentInput: ElementRef;
   constructor() {}
@@ -26,7 +26,7 @@ export class CockpitComponent implements OnInit {
       new Server(
         'server',
          serverNameInput.value, // this is an HTML element
-         this.serverContentInput.nativeElement.value)); // this is an element ref 
+         this.serverContentInput.nativeElement.value)); // this is an element ref using @ViewChild
   }
 
   onAddBlueprint(serverNameInput: HTMLInputElement) {

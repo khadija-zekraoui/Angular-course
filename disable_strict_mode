@@ -1,0 +1,10 @@
+  "forceConsistentCasingInFileNames": false,
+   "strict": false,
+   "noImplicitReturns": false,
+   "noFallthroughCasesInSwitch": false,
+   ...
+   "angularCompilerOptions": {
+      "strictInjectionParameters": false,
+      "strictInputAccessModifiers": false,
+      "strictTemplates": false
+   }
