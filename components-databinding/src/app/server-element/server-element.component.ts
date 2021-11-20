@@ -13,7 +13,7 @@ import { Server } from '../models/server.model';
 })
 export class ServerElementComponent implements OnInit {
   
-  // decorator to make a property bindale from outside
+  // decorator to make a property bindle from outside
   @Input('serverElement') element: Server | undefined;
   
   // Select component by reference which it allows getting direct access to elements in the DOM
