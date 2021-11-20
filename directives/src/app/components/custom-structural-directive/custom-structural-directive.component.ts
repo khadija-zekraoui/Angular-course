@@ -10,6 +10,7 @@ export class CustomStructuralDirectiveComponent implements OnInit {
   oddNumbers = [1, 3, 5];
   evenNumbers = [2, 4];
   onlyOdd = false;
+  value = Math.floor(Math.random() * 10);
 
   constructor() {}
 

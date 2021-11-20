@@ -30,7 +30,15 @@
       <p appEnhancedCustomDirective> Style me with enhanced directive!</p>
        <!-- we use brackets and set a value to a directive when this has an input(property binding) with the same name -->
       <p [appEventCustomDirective]="'red'" [highlightColor]="'yellow'"> Style me with event directive!</p>
-      
+      <!-- works as usual switch  -->
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="2">Value is 2</p>
+        <p *ngSwitchCase="4">Value is 4</p>
+        <p *ngSwitchCase="6">Value is 6</p>
+        <p *ngSwitchCase="8">Value is 8</p>
+        <p *ngSwitchCase="10">Value is 10</p>
+        <p *ngSwitchDefault>Value is odd</p>
+      </div>
     </div>
   </div>
 </div>
