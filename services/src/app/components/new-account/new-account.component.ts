@@ -1,22 +1,22 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { AccountService } from 'src/app/services/accounts.service';
 import { LoggingService } from '../../services/logging.service';
 
 @Component({
   selector: 'app-new-account',
   templateUrl: './new-account.component.html',
   styleUrls: ['./new-account.component.css'],
-  providers: [LoggingService]
+  // If we want to use a new instance of AccountService we have to add it to providers
+  providers: [LoggingService] //  AccountService is inherited from the parent component
 })
 export class NewAccountComponent {
-  @Output() accountAdded = new EventEmitter<{ name: string; status: string }>();
+  constructor(
+    private loggingSer: LoggingService,
+    private accountSrv: AccountService
+  ) {}
 
-  constructor (private loggingSer: LoggingService) {}
   onCreateAccount(accountName: string, accountStatus: string) {
-    this.accountAdded.emit({
-      name: accountName,
-      status: accountStatus,
-    });
-
+    this.accountSrv.addAccount(accountName, accountStatus);
     this.loggingSer.logStatusChange(accountStatus);
   }
 }

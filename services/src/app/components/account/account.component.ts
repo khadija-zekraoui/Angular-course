@@ -1,20 +1,25 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { AccountService } from 'src/app/services/accounts.service';
 import { LoggingService } from '../../services/logging.service';
 
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css'],
-  providers: [LoggingService]
+  // If we want to use a new instance of AccountService we have to add it to providers
+  providers: [LoggingService] //  AccountService is inherited from the parent component
 })
 export class AccountComponent {
-  @Input() account: {name: string, status: string};
+  @Input() account: { name: string; status: string };
   @Input() id: number;
-  @Output() statusChanged = new EventEmitter<{id: number, newStatus: string}>();
 
-  constructor (private loggingSer: LoggingService) {}
+  constructor(
+    private loggingSrv: LoggingService,
+    private accountSrv: AccountService
+  ) {}
+
   onSetTo(status: string) {
-    this.statusChanged.emit({id: this.id, newStatus: status});
-    this.loggingSer.logStatusChange(status);
+    this.accountSrv.UpdateAccount(this.id, status);
+    this.loggingSrv.logStatusChange(status);
   }
 }
