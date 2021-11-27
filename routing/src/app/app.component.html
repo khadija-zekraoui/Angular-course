@@ -2,9 +2,13 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#">Home</a></li>
-        <li role="presentation"><a href="#">Servers</a></li>
-        <li role="presentation"><a href="#">Users</a></li>
+        <!-- routerLink is an Angular directive -->
+        <!-- The element that has routerLink will serve as a link but clicking on it doesn't reload the page -->
+        <!-- this directive catches the click element and prevent the default behavior(send the request and reload the page) -->
+        <!-- and also analyzes the given path and checks if it is fitting a specific route in the appRoutes configuration -->
+        <li role="presentation" class="active"><a routerLink="/">Home</a></li>
+        <li role="presentation"><a routerLink="/servers">Servers</a></li>
+        <li role="presentation"><a routerLink="/users">Users</a></li>
       </ul>
     </div>
   </div>
