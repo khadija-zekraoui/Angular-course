@@ -6,9 +6,25 @@
         <!-- The element that has routerLink will serve as a link but clicking on it doesn't reload the page -->
         <!-- this directive catches the click element and prevent the default behavior(send the request and reload the page) -->
         <!-- and also analyzes the given path and checks if it is fitting a specific route in the appRoutes configuration -->
-        <li role="presentation" class="active"><a routerLink="/">Home</a></li>
-        <li role="presentation"><a routerLink="/servers">Servers</a></li>
-        <li role="presentation"><a routerLink="/users">Users</a></li>
+        <!-- routerLinkActive is an Angular directive which allows to put the active class to the element when is clicked -->
+        <!-- The active class inform bootstrap which tab is active -->
+        <!-- routerLinkActiveOptions it is a configuration used to mach the exact path "/" -->
+        <li 
+          role="presentation"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/">Home</a>
+        </li>
+        <li 
+          role="presentation" 
+          routerLinkActive="active">
+          <a routerLink="/servers">Servers</a>
+        </li>
+        <li 
+          role="presentation" 
+          routerLinkActive="active">
+          <a routerLink="/users">Users</a>
+        </li>
       </ul>
     </div>
   </div>
