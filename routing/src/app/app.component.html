@@ -9,20 +9,13 @@
         <!-- routerLinkActive is an Angular directive which allows to put the active class to the element when is clicked -->
         <!-- The active class inform bootstrap which tab is active -->
         <!-- routerLinkActiveOptions it is a configuration used to mach the exact path "/" -->
-        <li 
-          role="presentation"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{exact: true}">
+        <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <a routerLink="/">Home</a>
         </li>
-        <li 
-          role="presentation" 
-          routerLinkActive="active">
+        <li role="presentation" routerLinkActive="active">
           <a routerLink="/servers">Servers</a>
         </li>
-        <li 
-          role="presentation" 
-          routerLinkActive="active">
+        <li role="presentation" routerLinkActive="active">
           <a routerLink="/users">Users</a>
         </li>
       </ul>
@@ -31,7 +24,8 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <!-- Marks the place in our document where we want the Angular to load the component of the currently selected route -->
-      <router-outlet></router-outlet> 
+      <router-outlet></router-outlet>
+      <!-- this hook it reserved for all routes on the top level and not the children -->
     </div>
   </div>
 </div>
