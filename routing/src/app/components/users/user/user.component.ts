@@ -19,12 +19,12 @@ export class UserComponent implements OnInit {
      when and where data has been changed, for this reason, we have to use the observable params)*/
     this.user = {
       id: this.route.snapshot.params['id'],
-      name: this.route.snapshot.params['name']
+      name: this.route.snapshot.params['name'] 
     };
 
    /** We use observable here because the parameters of the currently loaded route might change
     at some point in the future if the user clicks the link(users/10/Anna) but we don't know when and how long it takes */ 
-   this.route.params.subscribe((params: Params) => { 
+   this.route.params.subscribe((params: Params) => { // Angular unsubscribe automatically when this component is destroyed.
      // Update the user object every time the route parameters change
      this.user.id = params['id']
      this.user.name = params['name']

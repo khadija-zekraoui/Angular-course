@@ -14,11 +14,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  onLoadServers() {
+  onLoadServers(id: number) {
     // Doing somethings and navigating to another page
 
     // Access to Angular router by injecting it in the constructor
-    this.router.navigate(['/servers']); // It is an absolute path to get to the servers page
+    // this.router.navigate(['/servers']); // It is an absolute path to get to the servers page
+    this.router.navigate(['/servers', id, 'edit'], {queryParams: {allowEdit: '1'}, fragment:'loading'}); 
   }
 
 }
