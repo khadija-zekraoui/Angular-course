@@ -14,7 +14,8 @@ import { UsersComponent } from './components/users/users.component';
 
 const appRoutes: Routes = [ // Routes of the app
   { path: '', component: HomeComponent },
-  { path: 'users', component: UserComponent },
+  { path: 'users', component: UsersComponent },
+  { path: 'users/:id/:name', component: UserComponent },
   { path: 'servers', component: ServersComponent },
 ];
 
