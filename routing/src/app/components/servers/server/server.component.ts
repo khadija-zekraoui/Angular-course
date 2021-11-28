@@ -31,7 +31,8 @@ export class ServerComponent implements OnInit {
   onEdit() {
     this.router.navigate(['edit'], 
     {
-      relativeTo: this.route, // Active page is http://localhost:4200/servers/1
+      relativeTo: this.route, // Active page with parameters is http://localhost:4200/servers/1?allowEdit=0#loading
+      queryParamsHandling: 'preserve' //Preserve current parameters (retrieves query parameters from the active route and pass them to the new one)
     });
   }
 }
