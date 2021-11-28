@@ -6,7 +6,7 @@
       <!-- With fragment http://localhost:4200/servers/5/edit?allowEdit=1#loading -->
       <a
         [routerLink]="['/servers', server.id]"
-        [queryParams]="{allowEdit: '1'}"
+        [queryParams]="{allowEdit: server.id === 3 ? '1' : '0'}"
         fragment="loading"
         class="list-group-item"
         *ngFor="let server of servers">
