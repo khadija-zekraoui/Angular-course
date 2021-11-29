@@ -21,7 +21,8 @@ const routes: Routes = [
   {
     path: 'servers',
     component: ServersComponent,
-    canActivate: [AuthGuard], // Array of all guard to apply to this route and their child routes
+    // canActivate: [AuthGuard], // Array of all guards to apply to this route and their child routes
+    canActivateChild: [AuthGuard], // Array of all guards to apply to the children of a route
     children: [
       // Group routes by parent(top level route) and children
       { path: ':id', component: ServerComponent },
