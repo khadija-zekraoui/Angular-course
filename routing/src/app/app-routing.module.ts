@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth-guard.service';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { EditServerComponent } from './components/servers/edit-server/edit-server.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   {
     path: 'servers',
     component: ServersComponent,
+    canActivate: [AuthGuard], // Array of all guard to apply to this route and their child routes
     children: [
       // Group routes by parent(top level route) and children
       { path: ':id', component: ServerComponent },
