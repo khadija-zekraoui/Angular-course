@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth-guard.service';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { CanDeactivateGuard } from './components/servers/edit-server/can-deactivate-guard.service';
 import { EditServerComponent } from './components/servers/edit-server/edit-server.component';
 import { ServerComponent } from './components/servers/server/server.component';
 import { ServersComponent } from './components/servers/servers.component';
@@ -26,7 +27,7 @@ const routes: Routes = [
     children: [
       // Group routes by parent(top level route) and children
       { path: ':id', component: ServerComponent },
-      { path: ':id/edit', component: EditServerComponent },
+      { path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] }, // canDeactivate is executed when the user want to leave this route
     ],
   },
   { path: 'not-found', component: PageNotFoundComponent },
