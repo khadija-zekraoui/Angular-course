@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Data, Params, Router } from '@angular/router';
+import { Server } from '../server.interface';
 
 import { ServersService } from '../servers.service';
 
@@ -9,7 +10,7 @@ import { ServersService } from '../servers.service';
   styleUrls: ['./server.component.css'],
 })
 export class ServerComponent implements OnInit {
-  server: { id: number; name: string; status: string };
+  server: Server;
 
   constructor(
     private serversService: ServersService,
@@ -18,21 +19,26 @@ export class ServerComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.server = this.serversService.getServer(
-      +this.route.snapshot.params['id']
-    ); // + to parse the id from string to number
-    this.route.params.subscribe((params: Params) => {
-      this.server = this.serversService.getServer(
-        +this.route.snapshot.params['id']
-      );
+    //Retrieve data using dynamic Data with the resolve Guard
+    this.route.data.subscribe((data: Data) => {
+      this.server = data['server'];
     });
+
+    //Retrieve data from ServerService
+    // this.server = this.serversService.getServer(
+    //   +this.route.snapshot.params['id']
+    // ); // + to parse the id from string to number
+    // this.route.params.subscribe((params: Params) => {
+    //   this.server = this.serversService.getServer(
+    //     +this.route.snapshot.params['id']
+    //   );
+    // });
   }
 
   onEdit() {
-    this.router.navigate(['edit'], 
-    {
+    this.router.navigate(['edit'], {
       relativeTo: this.route, // Active page with parameters is http://localhost:4200/servers/1?allowEdit=0#loading
-      queryParamsHandling: 'preserve' //Preserve current parameters (retrieves query parameters from the active route and pass them to the new one)
+      queryParamsHandling: 'preserve', //Preserve current parameters (retrieves query parameters from the active route and pass them to the new one)
     });
   }
 }
