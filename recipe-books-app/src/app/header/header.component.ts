@@ -1,20 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  constructor() {}
 
-  @Output() onSelectPage = new EventEmitter<string>();
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  onSelect(page: string){
-    this.onSelectPage.emit(page);
-  }
+  ngOnInit(): void {}
 }

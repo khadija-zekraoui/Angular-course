@@ -7,10 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'recipe-books-app';
-  page: string = 'recipes';
-
-  setPage(page: string) {
-    console.log("file: app.component.ts ~ line 13 ~ AppComponent ~ setPage ~ page", page)
-    this.page = page;
-  }
 }
