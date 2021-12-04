@@ -1,14 +1,13 @@
-import { EventEmitter, Injectable } from "@angular/core";
-import { Recipe } from "./recipe.model";
+import { EventEmitter, Injectable } from '@angular/core';
+import { Recipe } from './recipe.model';
 import { v4 as uuidv4 } from 'uuid';
-import { Ingredient } from "../shared/ingredient.model";
-import { ShoppingService } from "../shopping-list/shopping.service";
+import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingService } from '../shopping-list/shopping.service';
 
 @Injectable({
-  providedIn : 'root'
+  providedIn: 'root',
 })
 export class RecipeService {
-
   selectedRecipe: Recipe;
   recipes: Recipe[] = [
     new Recipe(
@@ -40,8 +39,12 @@ export class RecipeService {
   constructor(private shoppingSrv: ShoppingService) {}
 
   // Give a copy of the recipes array and not the reference
-  getRecipes() : Recipe[]{
+  getRecipes(): Recipe[] {
     return this.recipes.slice();
+  }
+
+  getRecipe(recipeId: string): Recipe {
+    return  this.recipes.find(({ id }) => id === recipeId);
   }
 
   setSelectedRecipe(recipe) {
