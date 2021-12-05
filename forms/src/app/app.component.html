@@ -21,6 +21,7 @@
             <label for="email">Mail</label>
             <!-- email is a directive and not an HTML attribute -->
             <!-- ngModel give us access to the email input control -->
+            <!-- ngModel ==> no binding ==> to just tell Angular that this input is a control -->
             <input 
               name="email" 
               type="email" 
@@ -36,6 +37,7 @@
         <div class="form-group">
           <label for="secret">Secret Questions</label>
           <!-- [ngModel] it used as a property binding to set a default value to this select -->
+          <!-- ngModel ==> one-way binding ==> to give this control a default value -->
           <select 
             name="secret" 
             id="secret" 
@@ -45,6 +47,16 @@
             <option value="teacher">Your first teacher?</option>
           </select>
         </div>
+        <div class="form-group">
+          <!-- ngModel ==> two-way binding ==> to instantly output the value of this control -->
+          <textarea 
+            class="form-control"
+            name="questionAnswer" 
+            rows="3"
+            [(ngModel)]="answer">
+          </textarea>
+        </div>
+        <p>Your reply: {{ answer }}</p>
         <!-- If we use this button to submit the form, the default behavior of HTML will be triggered ==> will send an HTTP request -->
         <!-- We can submit the form only if the it is valid -->
         <button 
