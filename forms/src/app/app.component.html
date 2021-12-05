@@ -35,7 +35,12 @@
         </div>
         <div class="form-group">
           <label for="secret">Secret Questions</label>
-          <select name="secret" id="secret" class="form-control" ngModel>
+          <!-- [ngModel] it used as a property binding to set a default value to this select -->
+          <select 
+            name="secret" 
+            id="secret" 
+            class="form-control" 
+            [ngModel]="defaultQuestion">
             <option value="pet">Your first Pet?</option>
             <option value="teacher">Your first teacher?</option>
           </select>
