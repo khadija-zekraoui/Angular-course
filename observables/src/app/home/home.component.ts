@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -12,14 +13,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit() {
-    // Create a custom observable that emit a new data(count) every 1 second.
-    // The observable is the element that observes(was subscribed to ) this observable
+    // Create a custom observable that emits new data(count) every 1 second.
+    // The observer is the element that observes(was subscribed to ) this observable
     const customIntervalObservable = Observable.create((observer) => {
       setInterval(() => {
         let count = Math.floor(Math.random() * 10);
         if (count > 8) {
-          // When an observable throws an error it's cancels but not completes
-          // In this case we don't need to unsubscribe
+          // When an observable throws an error it cancels but not completes
+          // In this case, we don't need to unsubscribe
           observer.error(new Error('Count is greater than 3!'));
         }
         // Set the observable as completed
@@ -32,23 +33,34 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
 
     // Store the subscription
-    this.subscription = customIntervalObservable.subscribe(
-      (data) => {
-        console.log(
-          'file: home.component.ts ~ line 36 ~ HomeComponent ~ data',
-          data
-        );
-      },
-      (error) => {
-        alert(error.message);
-      },
-      () => {
-        console.log(
-          'file: home.component.ts ~ line 41 ~ HomeComponent ~ completed',
-          true
-        );
-      }
-    );
+    // Pipe allows us to use operators to apply actions on the data before sending it to the observer.
+    // In this, case we use two operators: filter and map
+    this.subscription = customIntervalObservable
+      .pipe(
+        filter((data: number) => {
+          return data > 0;
+        }),
+        map((data: number) => {
+          return 'Round: ' + data;
+        })
+      )
+      .subscribe(
+        (data) => {
+          console.log(
+            'file: home.component.ts ~ line 36 ~ HomeComponent ~ data',
+            data
+          );
+        },
+        (error) => {
+          alert(error.message);
+        },
+        () => {
+          console.log(
+            'file: home.component.ts ~ line 41 ~ HomeComponent ~ completed',
+            true
+          );
+        }
+      );
   }
 
   ngOnDestroy(): void {
