@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  @ViewChild('f') signupForm!: NgForm;
+
   suggestUserName() {
     const suggestedName = 'Superuser';
   }
 
   onSubmit(form: NgForm) {
-  console.log("file: app.component.ts ~ line 14 ~ AppComponent ~ onSubmit ~ form", form)
+    console.log("file: app.component.ts ~ line 17 ~ AppComponent ~ onSubmit ~ this.signupForm", this.signupForm)
   }
 }
