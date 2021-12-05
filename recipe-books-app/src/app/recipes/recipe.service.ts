@@ -1,8 +1,9 @@
-import { EventEmitter, Injectable } from '@angular/core';
-import { Recipe } from './recipe.model';
+import { Injectable } from '@angular/core';
 import { v4 as uuidv4 } from 'uuid';
+
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingService } from '../shopping-list/shopping.service';
+import { Recipe } from './recipe.model';
 
 @Injectable({
   providedIn: 'root',
@@ -34,8 +35,6 @@ export class RecipeService {
     ),
   ];
 
-  onSetSelectedRecipe = new EventEmitter();
-
   constructor(private shoppingSrv: ShoppingService) {}
 
   // Give a copy of the recipes array and not the reference
@@ -44,12 +43,11 @@ export class RecipeService {
   }
 
   getRecipe(recipeId: string): Recipe {
-    return  this.recipes.find(({ id }) => id === recipeId);
+    return this.recipes.find(({ id }) => id === recipeId);
   }
 
   setSelectedRecipe(recipe) {
     this.selectedRecipe = recipe;
-    this.onSetSelectedRecipe.emit();
   }
 
   addIngredientsToShopping(ingredients: Ingredient[]) {
