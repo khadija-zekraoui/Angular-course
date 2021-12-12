@@ -59,6 +59,17 @@
           </textarea>
         </div>
         <p>Your reply: {{ answer }}</p>
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input 
+              type="radio" 
+              name="gender"
+              ngModel
+              [value]="gender"
+              required>
+              {{ gender }}
+          </label>
+        </div>
         <!-- If we use this button to submit the form, the default behavior of HTML will be triggered ==> will send an HTTP request -->
         <!-- We can submit the form only if the it is valid -->
         <button 
