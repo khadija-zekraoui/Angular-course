@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
     this.signupForm = new FormGroup({
       'username': new FormControl(null),
       'email': new FormControl(null),
-      'gender': new FormControl(null),
+      'gender': new FormControl('female'),
     });
   }
 }
