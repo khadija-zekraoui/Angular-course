@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +13,12 @@ export class AppComponent implements OnInit {
   signupForm!: FormGroup;
 
   // Create a form and connect it to the HTML code
-  //Initialize the form before rendering the template
+  // Initialize the form before rendering the template
+  // With Validators.required we only pass the reference to this method and Angular will execute it whenever it detects changes in this input
   ngOnInit(): void {
     this.signupForm = new FormGroup({
-      'username': new FormControl(null),
-      'email': new FormControl(null),
+      'username': new FormControl(null, Validators.required),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
       'gender': new FormControl('female'),
     });
   }
