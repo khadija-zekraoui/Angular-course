@@ -9,7 +9,8 @@
       <!-- The event made available by the ngSubmit(replace the HTML default behavior) directive will be fired whenever this form is submitted  -->
       <!-- ngForm allows us to retrieve the Javascript object created by Angular -->
       <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-        <div id="user-data">
+        <!-- ngModelGroup is an Angular directive to group elements in a form -->
+        <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
           <div class="form-group">
             <label for="username">Username</label>
             <!-- required is an HTML attribute but it will be considered by Angular as validation control -->
@@ -34,6 +35,7 @@
           </div>
           <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>
         </div>
+        <p *ngIf="!userData.valid && userData.touched">User data is invalid!</p>
         <div class="form-group">
           <label for="secret">Secret Questions</label>
           <!-- [ngModel] it used as a property binding to set a default value to this select -->
