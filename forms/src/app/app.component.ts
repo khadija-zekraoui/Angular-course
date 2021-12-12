@@ -11,6 +11,14 @@ export class AppComponent {
   defaultQuestion: string = 'pet';
   answer: string = '';
   genders: string[] = ['male', 'female'];
+  isSubmitted: boolean = false;
+  user = {
+    username: '',
+    email: '',
+    secretQuestion: '',
+    answer: '',
+    gender: '',
+  }
 
   suggestUserName() {
     const suggestedName = 'Superuser';
@@ -35,9 +43,17 @@ export class AppComponent {
   }
 
   onSubmit(form: NgForm) {
+    this.isSubmitted = true;
     console.log(
-      'file: app.component.ts ~ line 17 ~ AppComponent ~ onSubmit ~ this.signupForm',
+      'file: app.component.ts ~ line 46 ~ AppComponent ~ onSubmit ~ this.signupForm',
       this.signupForm
     );
+    this.user.username = this.signupForm.value.userData.username;
+    this.user.email = this.signupForm.value.userData.email;
+    this.user.secretQuestion = this.signupForm.value.secret;
+    this.user.answer = this.signupForm.value.questionAnswer;
+    this.user.gender = this.signupForm.value.gender;
+
+
   }
 }
