@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <!-- We use property binding to inform angular to take the FormGroup created in the TS file -->
-      <form [formGroup]="signupForm">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" >
         <!-- We use formControlName to tell angular which controls in the FormGroup should be connected to which inputs in the template code -->
         <!-- in [formControlName]="'username'"  we can omit the brackets and the simple quotations because we assigned to it string -->
         <div class="form-group">

@@ -21,4 +21,8 @@ export class AppComponent implements OnInit {
       'gender': new FormControl('female'),
     });
   }
+
+  onSubmit() {
+    console.log("file: app.component.ts ~ line 26 ~ AppComponent ~ onSubmit ~ this.signupForm", this.signupForm)
+  }
 }
