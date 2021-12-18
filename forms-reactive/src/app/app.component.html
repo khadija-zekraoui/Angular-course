@@ -42,6 +42,21 @@
               [value]="gender">{{ gender }}
           </label>
         </div>
+        <!-- To tell Angular that somewhere in this div, we will use this array -->
+        <div formArrayName="hobbies">
+          <h4>Your Hobbies</h4>
+          <button 
+            class="btn btn-default"
+            type="button"
+            (click)="onAddHobby()">
+            Add Hobby
+          </button>
+          <div 
+            class="form-group"
+            *ngFor="let hobbyControl of controls; let i = index">
+            <input type="text" [formControlName]="i">
+          </div>
+        </div>
         <span
           *ngIf="!signupForm.valid && signupForm.touched"
           class="helop-block"
