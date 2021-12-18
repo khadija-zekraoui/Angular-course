@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormArray,
+  FormControl,
+  FormGroup,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +15,8 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   genders = ['male', 'female'];
+  forbiddenUsernames = ['Anna', 'Chris'];
+
   // In Angular a form is a a group of controls and what is FormGroup holds
   signupForm!: FormGroup;
 
@@ -18,11 +27,11 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.signupForm = new FormGroup({
       userData: new FormGroup({
-        username: new FormControl(null, Validators.required),
+        username: new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
         email: new FormControl(null, [Validators.required, Validators.email]),
       }),
       gender: new FormControl('female'),
-      hobbies: new FormArray([])
+      hobbies: new FormArray([]),
     });
   }
 
@@ -31,9 +40,12 @@ export class AppComponent implements OnInit {
   }
 
   onAddHobby() {
-   (<FormArray> this.signupForm.get('hobbies')).push(
-    new FormControl(null, Validators.required)
-   );
+    // bind this because Angular will call this.forbiddenNames()
+    (<FormArray>this.signupForm.get('hobbies')).push(
+      new FormControl(null, [
+        Validators.required,
+      ])
+    );
   }
 
   onSubmit() {
@@ -44,4 +56,20 @@ export class AppComponent implements OnInit {
 
     this.signupForm.get('gender').reset();
   }
+
+  // Is a custom validator
+  // It needs to receive an argument which is the control it should check
+  // It has to return an object respecting a specific syntax {key: boolean}
+  forbiddenNames(control: FormControl): {[key: string]: boolean} {
+    if (this.forbiddenUsernames.indexOf(control.value) !== -1) {  // -1 means true
+      return {'nameIsForbidden': true};
+    }
+    return null;  // this tells angular the condition is valid
+  }
 }
+
+// export function forbiddenNames(): ValidatorFn {
+//   return (control: AbstractControl): { [key: string]: any } | null =>
+//     this.forbiddenUsernames.indexOf(control.value) !== -1
+//           ? {nameIsForbidden: true} : null;
+// }
