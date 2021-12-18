@@ -67,9 +67,3 @@ export class AppComponent implements OnInit {
     return null;  // this tells angular the condition is valid
   }
 }
-
-// export function forbiddenNames(): ValidatorFn {
-//   return (control: AbstractControl): { [key: string]: any } | null =>
-//     this.forbiddenUsernames.indexOf(control.value) !== -1
-//           ? {nameIsForbidden: true} : null;
-// }
