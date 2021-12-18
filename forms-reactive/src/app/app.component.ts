@@ -27,19 +27,19 @@ export class AppComponent implements OnInit {
   // we can use FormGroup inside another FormGroup to create a nested form
   ngOnInit(): void {
     this.signupForm = new FormGroup({
-      userData: new FormGroup({
-        username: new FormControl(null, [
+      'userData': new FormGroup({
+        'username': new FormControl(null, [
           Validators.required,
           this.forbiddenNames.bind(this),
         ]),
-        email: new FormControl(
+        'email': new FormControl(
           null,
           [Validators.required, Validators.email],
           this.forbiddenEmails.bind(this)
         ),
       }),
-      gender: new FormControl('female'),
-      hobbies: new FormArray([]),
+      'gender': new FormControl('female'),
+      'hobbies': new FormArray([]),
     });
 
     // Is executed whenever a value of a FormControl is changes
@@ -50,6 +50,24 @@ export class AppComponent implements OnInit {
     // Is executed whenever a status of a FormControl is changes
     this.signupForm.statusChanges.subscribe((status) => {
       console.log('AppComponent -> value', status);
+    });
+
+    // set a value of all the elements of the form -> to set the whole form
+    // Not the best approach
+    // this.signupForm.setValue({
+    //   'userData': {
+    //     'username': 'superWoman',
+    //     'email': 'superWoman@gmail.com',
+    //   },
+    //   'gender': 'female',
+    //   'hobbies': []
+    // });
+
+    // set a value of a specific element of the form -> to overwrite a parts of the form
+    this.signupForm.patchValue({
+      'userData': {
+        'username': 'superWoman',
+      },
     });
   }
 
@@ -70,7 +88,7 @@ export class AppComponent implements OnInit {
       this.signupForm
     );
 
-    this.signupForm.get('gender').reset();
+    this.signupForm.reset();
   }
 
   // Is a custom validator
