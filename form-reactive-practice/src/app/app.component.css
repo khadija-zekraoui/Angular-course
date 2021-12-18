@@ -1,0 +1,8 @@
+.container {
+  margin-top: 30px;
+}
+
+/* classes added automatically by Angular to manage the state of the form */
+input.ng-invalid.ng-touched{
+  border: 1px solid crimson;
+}
